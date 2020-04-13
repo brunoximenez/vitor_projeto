@@ -54,8 +54,8 @@ def matrix_calculation(K, G, R):
 
     KHS = (KHSinf + KHSsup) / 2
     GHS = (GHSinf + GHSsup) / 2
-    VPVS = ((KHS / GHS) + (4 / 3)) ** (1 / 2)
-    AI = 1000 * RHO * (((KHS + (4 * GHS / 3)) / RHO) ** (1 / 2))
+    VPVS = np.sqrt(((KHS / GHS) + (4 / 3)))
+    AI = 1000 * RHO * np.sqrt(((KHS + (4 * GHS / 3)) / RHO))
     KHS = np.vstack(KHS)
     GHS = np.vstack(GHS)
     VPVS = np.vstack(VPVS)
