@@ -15,7 +15,7 @@ Gcal = 32.0  # Modulo Shear dos minerais (calcita, dolomita, quartzo)
 Gdol = 45.0
 Gqtz = 45.0
 Rcal = 2.71  # Densidade dos minerais (calcita, dolomita, quartzo)
-Rdol = 2.85
+Rdol = 2.87
 Rqtz = 2.65
 
 
@@ -25,16 +25,18 @@ Rqtz = 2.65
 K = np.array([Kcal, Kdol, Kqtz])  # Modulo Bulk maximo e minimo
 G = np.array([Gcal, Gdol, Gqtz])
 R = np.array([Rcal, Rdol, Rqtz])
-prop = (['Effective bulk modulus (GPa)', 'Effective shear modulus (GPa)', 'Velocity ratio (frac)', 'Acoustic impedance (Pa.s/m)'])
+prop = (['Effective bulk modulus (GPa)', 'Effective shear modulus (GPa)', 'Velocity ratio (frac)', 'Acoustic impedance (Pa.s/m)', 'Density (g/cm$^{3}$)'])
 
-KHS_M, GHS_M, VPVS_M, AI_M = matrix_calculation(K, G, R)
+KHS_M, GHS_M, VPVS_M, AI_M, RHO_M= matrix_calculation(K, G, R)
 
 save_file('KHS_ternary.txt', KHS_M)
 save_file('GHS_ternary.txt', GHS_M)
 save_file('VPVS_ternary.txt', VPVS_M)
 save_file('AI_ternary.txt', AI_M)
+save_file('RHO_ternary.txt', RHO_M)
 
 plot('KHS_ternary.txt', 100, 35, 95, prop[0])
 plot('GHS_ternary.txt', 100, 30, 45, prop[1])
 plot('VPVS_ternary.txt', 100, 1.45, 1.95, prop[2])
 plot('AI_ternary.txt', 100, 16000, 21000, prop[3])
+plot('RHO_ternary.txt', 100, 2.60, 2.90, prop[4])

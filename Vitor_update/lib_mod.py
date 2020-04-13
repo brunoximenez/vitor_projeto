@@ -49,22 +49,24 @@ def matrix_calculation(K, G, R):
             x = -auxGmin + 1 / ((i * 1e-2 / (G[0] + auxGmin)) + (j * 1e-2 / (G[1] + auxGmin)) + (k / (G[2] + auxGmin)))
             GHSinf = np.append(GHSinf, x)
             # Densidade
-            x = (R[0] * i * 1e-2) + (R[1] * j * 1e-2) + (R[2] * k * 1e-2)
+            x = (R[0] * i * 1e-2) + (R[1] * j * 1e-2) + (R[2] * k)
             RHO = np.append(RHO, x)
 
     KHS = (KHSinf + KHSsup) / 2
     GHS = (GHSinf + GHSsup) / 2
     VPVS = np.sqrt(((KHS / GHS) + (4 / 3)))
-    AI = 1000 * RHO * np.sqrt(((KHS + (4 * GHS / 3)) / RHO))
+    AI = RHO * np.sqrt(((KHS * 1e+9 + (4 * GHS * 1e+9 / 3)) / (1000 * RHO)))
+    RHO = np.vstack(RHO)
     KHS = np.vstack(KHS)
     GHS = np.vstack(GHS)
     VPVS = np.vstack(VPVS)
     AI = np.vstack(AI)
+    RHO_M = np.append(M, RHO, axis=1)
     KHS_M = np.append(M, KHS, axis=1)
     GHS_M = np.append(M, GHS, axis=1)
     VPVS_M = np.append(M, VPVS, axis=1)
     AI_M = np.append(M, AI, axis=1)
-    return KHS_M, GHS_M, VPVS_M, AI_M
+    return KHS_M, GHS_M, VPVS_M, AI_M, RHO_M
 
 
 def plot(file, scale, vmin, vmax, prop):
