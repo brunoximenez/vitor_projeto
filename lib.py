@@ -89,8 +89,9 @@ def plot(file, scale, vmin, vmax):
                  "pad": 0.05,
                  "aspect": 30}
 
+
     tax.scatter(data, marker='o', c=c, edgecolor='k', s=scale / 4, linewidths=0.5,
-                vmin=vmin, vmax=vmax, colorbar=True, colormap='jet', cbarlabel='Effective modulus (GPa)',
+                vmin=vmin, vmax=vmax, colorbar=True, colormap='viridis', cbarlabel='Effective modulus (GPa)',
                 cb_kwargs=cb_kwargs, zorder=3)
 
     tax._redraw_labels()
