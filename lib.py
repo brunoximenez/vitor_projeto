@@ -91,8 +91,8 @@ def plot(file, scale, vmin, vmax):
 
 
     tax.scatter(data, marker='o', c=c, edgecolor='k', s=scale / 4, linewidths=0.5,
-                vmin=vmin, vmax=vmax, colorbar=True, colormap='viridis', cbarlabel='Effective modulus (GPa)',
-                cb_kwargs=cb_kwargs, zorder=3)
+                vmin=vmin, vmax=vmax, colorbar=True, colormap='jet', cbarlabel='Effective modulus (GPa)',
+                cb_kwargs=cb_kwargs, zorder=3, cmap='jet')
 
     tax._redraw_labels()
     ternary.plt.show()
